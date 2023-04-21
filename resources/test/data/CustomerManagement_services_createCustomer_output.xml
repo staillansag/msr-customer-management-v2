@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.util.Values">
+    <value name="responseCode">201</value>
+    <value name="reasonPhrase">Created</value>
+    <record name="customer" javaclass="com.wm.data.ISMemDataImpl">
+      <value name="id">217bc0de-e081-4087-b334-2252267bf8f2</value>
+      <value name="lastName">lastName</value>
+      <value name="firstName">firstName</value>
+      <value name="birthDate">2001-01-01</value>
+      <value name="status">ACTIVE</value>
+    </record>
+  </record>
+</IDataXMLCoder>

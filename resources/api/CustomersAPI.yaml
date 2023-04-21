@@ -1,0 +1,275 @@
+swagger: '2.0'
+info:
+  description: Customer management API to showcase microservices implementation using the webMethods stack
+  version: '2.0'
+  title: CustomersAPI
+host: customers.sttlab.eu
+basePath: /customer-management
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /customers/{customerId}:
+    get:
+      description: Use this method to retrieve a customer given its id
+      operationId: getCustomer
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - name: customerId
+          in: path
+          description: id of the customer that is to be retrieved
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          examples:
+            application/json: |-
+              {
+                "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "lastName": "Lyndon",
+                "firstName": "James",
+                "birthDate": "2001-10-01",
+                "status": "ACTIVE"
+              }
+          schema:
+            $ref: '#/definitions/getCustomerResponse'
+        '401':
+          description: Access Denied
+        '404':
+          description: Not found
+    put:
+      description: Use this method to update a customer given its id
+      operationId: putCustomer
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: customerId
+          in: path
+          description: id of the customer that is to be updated
+          required: true
+          type: string
+        - in: body
+          name: body
+          required: false
+          schema:
+            $ref: '#/definitions/CustomerCanonical'
+          x-examples:
+            application/json: |-
+              {
+                "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "lastName": "Lyndon",
+                "firstName": "James",
+                "birthDate": "2001-10-01",
+                "status": "ACTIVE"
+              }
+      responses:
+        '200':
+          description: OK
+          examples:
+            application/json: |-
+              {
+                "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "lastName": "Lyndon",
+                "firstName": "James",
+                "birthDate": "2001-10-01",
+                "status": "ACTIVE"
+              }
+          schema:
+            $ref: '#/definitions/putCustomerResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Access Denied
+        '404':
+          description: Not found
+    delete:
+      description: Use this method to delete a customer given its id
+      operationId: deleteCustomer
+      consumes: []
+      parameters:
+        - name: customerId
+          in: path
+          description: id of the customer that is to be deleted
+          required: true
+          type: string
+      responses:
+        '204':
+          description: OK
+        '401':
+          description: Access Denied
+        '404':
+          description: Not found
+  /customers:
+    get:
+      description: Use this method to list and filter customers
+      operationId: getCustomers
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - name: lastName
+          in: query
+          description: Use this parameter to filter on the last name
+          required: false
+          type: string
+        - name: firstName
+          in: query
+          description: Use this parameter to filter on the first name
+          required: false
+          type: string
+        - name: birthDateFrom
+          in: query
+          description: Use this parameter to filter on the birth date, all customers having a birth date less than this date will be omitted from results
+          required: false
+          type: string
+        - name: birthDateTo
+          in: query
+          description: Use this parameter to filter on the birth date, all customers having a birth date greater than this date will be omitted from results
+          required: false
+          type: string
+        - name: status
+          in: query
+          description: Use this parameter to filter on the status
+          required: false
+          type: string
+        - name: pageNumber
+          in: query
+          description: Use this parameter to paginate results
+          required: false
+          type: integer
+          default: 1
+          minimum: 1
+          format: int64
+        - name: pageSize
+          in: query
+          description: Use this parameter to set the number of customers returned by a single call
+          required: false
+          type: integer
+          default: 100
+          maximum: 1000
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/getCustomersResponse'
+          examples:
+            application/json: |-
+              [{
+                "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "lastName": "Lyndon",
+                "firstName": "James",
+                "birthDate": "2001-10-01",
+                "status": "ACTIVE"
+              }]
+        '400':
+          description: Bad request
+        '401':
+          description: Access Denied
+    post:
+      description: Use this method to create a new customer
+      operationId: postCustomer
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: false
+          schema:
+            $ref: '#/definitions/CustomerCanonical'
+          x-examples:
+            application/json: |-
+              {
+                "lastName": "Lyndon",
+                "firstName": "James",
+                "birthDate": "2001-10-01",
+                "status": "ACTIVE"
+              }
+      responses:
+        '201':
+          description: Created
+          examples:
+            application/json: |-
+              {
+                "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "lastName": "Lyndon",
+                "firstName": "James",
+                "birthDate": "2001-10-01",
+                "status": "ACTIVE"
+              }
+          schema:
+            $ref: '#/definitions/postCustomerResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Access Denied
+definitions:
+  postCustomerResponse:
+    type: object
+    required:
+      - customer
+    properties:
+      customer:
+        $ref: '#/definitions/CustomerCanonical'
+  getCustomerResponse:
+    type: object
+    properties:
+      customer:
+        $ref: '#/definitions/CustomerCanonical'
+  getCustomersResponse:
+    type: object
+    required:
+      - customers
+    properties:
+      customers:
+        type: array
+        items:
+          $ref: '#/definitions/CustomerCanonical'
+  CustomerCanonical:
+    type: object
+    required:
+      - firstName
+      - lastName
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: Customer identifier, generated by the server (do not send it in POST requests)
+      lastName:
+        type: string
+        description: Customer last name
+        minLength: 1
+        maxLength: 100
+      firstName:
+        type: string
+        description: Customer first name
+        minLength: 1
+        maxLength: 100
+      birthDate:
+        type: string
+        format: date
+        description: Customer date of birth
+      status:
+        type: string
+        description: Customer status
+        enum:
+          - ACTIVE
+          - INACTIVE
+        default: ACTIVE
+  putCustomerResponse:
+    type: object
+    required:
+      - customer
+    properties:
+      customer:
+        $ref: '#/definitions/CustomerCanonical'

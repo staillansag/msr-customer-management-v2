@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webMethodsTestSuite description="Customer Management Test Suite" name="Customer Management Test Suite">
+    <webMethodsTestCase description="Generate a Test Wizard" name="TC_insertCustomer">
+        <service folder="CustomerManagement.jdbc" name="insertCustomer">
+            <input>
+                <file filename="resources/test/data/CustomerManagement_jdbc_insertCustomer_input.xml"/>
+            </input>
+            <expected>
+                <file filename="resources/test/data/CustomerManagement_jdbc_insertCustomer_output.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    <webMethodsTestCase description="Generate a Test Wizard" name="TC_selectCustomerById">
+        <service folder="CustomerManagement.jdbc" name="selectCustomerById">
+            <input>
+                <file filename="resources/test/data/CustomerManagement_jdbc_selectCustomerById_input.xml"/>
+            </input>
+            <expected>
+                <file filename="resources/test/data/CustomerManagement_jdbc_selectCustomerById_output.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    <webMethodsTestCase description="Generate a Test Wizard" name="TC_selectCustomers_afterCreate">
+        <service folder="CustomerManagement.jdbc" name="selectCustomers">
+            <input>
+                <file filename="resources/test/data/CustomerManagement_jdbc_selectCustomers_input_afterCreate.xml"/>
+            </input>
+            <expected>
+                <file filename="resources/test/data/CustomerManagement_jdbc_selectCustomers_output_afterCreate.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    <webMethodsTestCase description="Generate a Test Wizard" name="TC_updateCustomer">
+        <service folder="CustomerManagement.jdbc" name="updateCustomer">
+            <input>
+                <file filename="resources/test/data/CustomerManagement_jdbc_updateCustomer_input.xml"/>
+            </input>
+            <expected>
+                <file filename="resources/test/data/CustomerManagement_jdbc_updateCustomer_output.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    <webMethodsTestCase description="Generate a Test Wizard" name="TC_selectCustomerById_afterUpdate">
+        <service folder="CustomerManagement.jdbc" name="selectCustomerById">
+            <input>
+                <file filename="resources/test/data/CustomerManagement_jdbc_selectCustomerById_input.xml"/>
+            </input>
+            <expected>
+                <file filename="resources/test/data/CustomerManagement_jdbc_selectCustomerById_output_afterUpdate.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    <webMethodsTestCase description="Generate a Test Wizard" name="TC_selectCustomers_afterUpdate">
+        <service folder="CustomerManagement.jdbc" name="selectCustomers">
+            <input>
+                <file filename="resources/test/data/CustomerManagement_jdbc_selectCustomers_input_afterUpdate.xml"/>
+            </input>
+            <expected>
+                <file filename="resources/test/data/CustomerManagement_jdbc_selectCustomers_output_afterUpdate.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    <webMethodsTestCase description="Generate a Test Wizard" name="TC_deleteCustomer">
+        <service folder="CustomerManagement.jdbc" name="deleteCustomer">
+            <input>
+                <file filename="resources/test/data/CustomerManagement_jdbc_deleteCustomer_input.xml"/>
+            </input>
+            <expected>
+                <file filename="resources/test/data/CustomerManagement_jdbc_deleteCustomer_output.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    <webMethodsTestCase description="Generate a Test Wizard" name="TC_selectCustomerById_afterDelete">
+        <service folder="CustomerManagement.jdbc" name="selectCustomerById">
+            <input>
+                <file filename="resources/test/data/CustomerManagement_jdbc_selectCustomerById_input.xml"/>
+            </input>
+            <expected>
+                <file filename="resources/test/data/CustomerManagement_jdbc_selectCustomerById_output_afterDelete.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    <webMethodsTestCase description="Generate a Test Wizard" name="TC_service_createCustomer">
+        <mock folder="CustomerManagement.jdbc" name="insertCustomer">
+            <pipeline filename="resources/test/data/insertCustomer_mockResponse.xml"/>
+        </mock>
+        <service folder="CustomerManagement.services" name="createCustomer">
+            <input>
+                <file filename="resources/test/data/CustomerManagement_services_createCustomer_input.xml"/>
+            </input>
+            <expected>
+                <file filename="resources/test/data/CustomerManagement_services_createCustomer_output.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+</webMethodsTestSuite>

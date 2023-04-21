@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <record name="selectCustomersOutput" javaclass="com.wm.data.ISMemDataImpl">
+      <value name="SQLStatement">select  t1.id, 
+        t1.lastName, 
+        t1.firstName, 
+        t1.birthDate, 
+        t1.status
+from    (select *, Row_Number() over (order by t.lastName asc, t.firstName asc, t.birthDate asc) as rowNumber 
+from public.customers t) as t1
+where id is not null
+AND t1.lastName ILIKE '%lastName%'
+AND t1.firstName ILIKE '%firstName%'
+AND t1.birthDate BETWEEN '2001-01-01' AND '2001-01-01'
+AND t1.status LIKE 'ACTIVE%'
+AND t1.rowNumber BETWEEN 0 AND 100</value>
+      <array name="results" type="record" depth="1">
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">1dacf591-8e41-4d65-ad56-c06be1b6216a</value>
+          <value name="lastName">lastName</value>
+          <value name="firstName">firstName</value>
+          <value name="birthDate">2001-01-01</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+      </array>
+      <number name="nbSelected" type="java.lang.Integer">1</number>
+    </record>
+  </record>
+</IDataXMLCoder>

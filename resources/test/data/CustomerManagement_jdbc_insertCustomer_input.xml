@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <record name="insertCustomerInput" javaclass="com.wm.data.ISMemDataImpl">
+      <value name="id">1dacf591-8e41-4d65-ad56-c06be1b6216a</value>
+      <value name="lastname">lastName</value>
+      <value name="firstname">firstName</value>
+      <value name="birthdate">2001-01-01</value>
+      <value name="status">ACTIVE</value>
+    </record>
+  </record>
+</IDataXMLCoder>

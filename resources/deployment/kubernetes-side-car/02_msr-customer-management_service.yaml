@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-management
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: sttcustomer
+  labels:
+    name: customer-management
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 9090
+  selector:
+    app: customer-management

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <record name="selectCustomerByIdInput" javaclass="com.wm.data.ISMemDataImpl">
+      <value name="id">1dacf591-8e41-4d65-ad56-c06be1b6216a</value>
+    </record>
+  </record>
+</IDataXMLCoder>

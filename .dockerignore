@@ -1,0 +1,7 @@
+Dockerfile
+.dockerignore
+.git
+*.md
+.gitignore
+*.bak
+resources/deployment

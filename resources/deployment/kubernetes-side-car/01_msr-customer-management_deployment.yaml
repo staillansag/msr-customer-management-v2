@@ -1,0 +1,149 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: customer-management
+  name: customer-management
+spec:
+  replicas: 2
+  strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 0
+  minReadySeconds: 60
+  selector:
+    matchLabels:
+      app: customer-management
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+      labels:
+        app: customer-management
+    spec:
+      containers:
+      - name: customer-management-mcgw
+        image: azdevopssttacr.azurecr.io/microgateway:10.15.0.0.1
+        ports:
+        - name: metrics
+          containerPort: 9090
+        env:
+        - name: mcgw_api_gateway_url
+          valueFrom:
+            configMapKeyRef:
+              name: environment-config
+              key: apiGatewayUrl
+        - name: mcgw_api_gateway_user
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: apiGatewayUser
+        - name: mcgw_api_gateway_password
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: apiGatewayPassword
+        - name: mcgw_downloads_apis
+          value: CustomersAPI
+        - name: mcgw_ports_http
+          value: "9090"
+        - name: mcgw_ports_https
+          value: "9093"
+        - name: mcgw_microgatewayPool_microgatewayPoolName
+          value: customer-management-mcgw
+        - name: mcgw_aliases_customermanagement_be_url_type
+          value: endpoint
+        - name: mcgw_aliases_customermanagement_be_url_endPointURI
+          value: http://localhost:5555/customer-management
+        - name: mggw_applications_sync_enabled
+          value: "true"
+        - name: mggw_applications_sync_polling_interval_secs
+          value: "10"
+        livenessProbe:
+          tcpSocket:
+            port: 9090
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 9090
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      - image: azdevopssttacr.azurecr.io/msr-customer-management:latest
+        imagePullPolicy: Always
+        name: customer-management-msr
+        ports:
+        - name: metrics
+          containerPort: 5555
+        volumeMounts:
+        - mountPath: "/tmp/license"
+          name: licenses
+          readOnly: true
+        env:
+        - name: DATASOURCE_CLASS
+          value: org.postgresql.ds.PGSimpleDataSource
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: databaseUser
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: databasePassword
+        - name: DB_SERVERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: environment-config
+              key: databaseServerName        
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: environment-config
+              key: databaseServerPort    
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: environment-config
+              key: databaseName    
+        - name: MSR_URL
+          valueFrom:
+            configMapKeyRef:
+              name: environment-config
+              key: domainName
+        - name: IO_INT_URL
+          valueFrom:
+            configMapKeyRef:
+              name: environment-config
+              key: wmioIntegrationUrl
+        - name: IO_INT_USER
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: wmioIntegrationUser
+        - name: IO_INT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: wmioIntegrationPassword
+        livenessProbe:
+          tcpSocket:
+            port: 5555
+          initialDelaySeconds: 180
+          periodSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 5555
+          initialDelaySeconds: 5
+          periodSeconds: 15
+          failureThreshold: 12
+      volumes:
+      - name: licenses
+        secret:
+          secretName: licenses
+      imagePullSecrets:
+      - name: sagregcred
+      - name: acrregcred
+

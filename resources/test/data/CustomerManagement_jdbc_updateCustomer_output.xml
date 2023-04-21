@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.util.Values">
+    <record name="updateCustomerInput" javaclass="com.wm.data.ISMemDataImpl">
+      <value name="lastname">Other lastName</value>
+      <value name="firstname">Other firstName</value>
+      <value name="birthdate">2001-12-31</value>
+      <value name="status">INACTIVE</value>
+      <value name="id">1dacf591-8e41-4d65-ad56-c06be1b6216a</value>
+    </record>
+    <record name="updateCustomerOutput" javaclass="com.wm.data.ISMemDataImpl">
+      <number name="nbUpdated" type="java.lang.Integer">1</number>
+    </record>
+  </record>
+</IDataXMLCoder>

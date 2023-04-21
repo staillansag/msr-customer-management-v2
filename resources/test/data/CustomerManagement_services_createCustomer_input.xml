@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <record name="customer" javaclass="com.wm.data.ISMemDataImpl">
+      <value name="lastName">lastName</value>
+      <value name="firstName">firstName</value>
+      <value name="birthDate">2001-01-01</value>
+      <value name="status">ACTIVE</value>
+    </record>
+  </record>
+</IDataXMLCoder>

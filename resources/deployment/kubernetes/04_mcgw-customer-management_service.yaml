@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mcgw-customer-management
+  labels:
+    name: mcgw-customer-management
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 9090
+  selector:
+    app: mcgw-customer-management

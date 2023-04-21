@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.util.Values">
+    <record name="selectCustomersInput" javaclass="com.wm.data.ISMemDataImpl">
+      <value name="statusFilter">ACTIVE</value>
+      <value name="birthDateFilterFrom">2001-01-01</value>
+      <value name="birthDateFilterTo">2001-12-31</value>
+      <value name="rowNumberFilterFrom">0</value>
+      <value name="rowNumberFilterTo">100</value>
+    </record>
+    <record name="selectCustomersOutput" javaclass="com.wm.data.ISMemDataImpl">
+      <array name="results" type="record" depth="1">
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">1dacf591-8e41-4d65-ad56-c06be1b6216a</value>
+          <value name="lastName">lastName</value>
+          <value name="firstName">firstName</value>
+          <value name="birthDate">2001-01-01</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">8880864b-0802-4960-8df1-d2b2317fb330</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">3c435ccb-90e4-4ca6-a96f-e3217b31b9bd</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">5ef9f46a-c891-4a09-b32a-969fd3077994</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">34d6e114-6c8f-4e90-aab8-9d8c0600d568</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">69fcb077-e78b-4fad-a490-3353913ccf58</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">62caaca1-021b-4d3e-85af-28d3360fade5</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">fe5ee58b-a5a6-4c3f-8437-c0233aa53a9a</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">d3140edd-58f3-49c0-a9d2-e1472b2ad082</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">64a25b04-c5e7-4d3b-8768-74a904fde228</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">698f3ced-35dd-48a4-9468-a7ed9ac2dc14</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">541217ca-9afb-4946-bdfc-ca72ca097a56</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">ef201b00-8450-40fa-b45d-406afe93d96a</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">50b896ac-5d18-4ffb-aaa9-60dd7849bf24</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">63b62a99-b992-4d7a-9da7-056598a63ba2</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">87140cf2-6e70-4c77-b919-b94cb7b83a4e</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">ffe3c255-a5f2-4bc6-87a2-aeb662fcae89</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">1af630f6-38c7-43f9-95ff-1f0f7e30efa6</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">018a0f50-5d75-4877-8cb6-64e647f1b77e</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">d34e4a38-4a13-4aa9-962e-026f53bcd409</value>
+          <value name="lastName">Smith</value>
+          <value name="firstName">Linda</value>
+          <value name="birthDate">2001-12-15</value>
+          <value name="status">ACTIVE              </value>
+        </record>
+      </array>
+      <number name="nbSelected" type="java.lang.Integer">20</number>
+      <value name="SQLStatement">select  t1.id, 
+        t1.lastName, 
+        t1.firstName, 
+        t1.birthDate, 
+        t1.status
+from    (select *, Row_Number() over (order by t.lastName asc, t.firstName asc, t.birthDate asc) as rowNumber 
+from public.customers t) as t1
+where id is not null
+AND t1.lastName ILIKE '%%'
+AND t1.firstName ILIKE '%%'
+AND t1.birthDate BETWEEN '2001-01-01' AND '2001-12-31'
+AND t1.status LIKE 'ACTIVE%'
+AND t1.rowNumber BETWEEN 0 AND 100</value>
+    </record>
+  </record>
+</IDataXMLCoder>

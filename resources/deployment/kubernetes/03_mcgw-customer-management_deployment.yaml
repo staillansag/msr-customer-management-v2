@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mcgw-customer-management
+  name: mcgw-customer-management
+spec:
+  replicas: 1
+  strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 0
+  minReadySeconds: 60
+  selector:
+    matchLabels:
+      app: mcgw-customer-management
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+      labels:
+        app: mcgw-customer-management
+    spec:
+      containers:
+      - name: customer-management-mcgw
+        image: azdevopssttacr.azurecr.io/microgateway:10.15.0.0.1
+        ports:
+        - name: metrics
+          containerPort: 9090
+        env:
+        - name: mcgw_api_gateway_url
+          valueFrom:
+            configMapKeyRef:
+              name: environment-config
+              key: apiGatewayUrl
+        - name: mcgw_api_gateway_user
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: apiGatewayUser
+        - name: mcgw_api_gateway_password
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: apiGatewayPassword
+        - name: mcgw_downloads_apis
+          value: CustomersAPI
+        - name: mcgw_ports_http
+          value: "9090"
+        - name: mcgw_ports_https
+          value: "9093"
+        - name: mcgw_microgatewayPool_microgatewayPoolName
+          value: customer-management-mcgw
+        - name: mcgw_aliases_customermanagement_be_url_type
+          value: endpoint
+        - name: mcgw_aliases_customermanagement_be_url_endPointURI
+          value: http://msr-customer-management/customer-management
+        - name: mggw_applications_sync_enabled
+          value: "true"
+        - name: mggw_applications_sync_polling_interval_secs
+          value: "10"
+        livenessProbe:
+          tcpSocket:
+            port: 9090
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 9090
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      imagePullSecrets:
+      - name: acrregcred
+

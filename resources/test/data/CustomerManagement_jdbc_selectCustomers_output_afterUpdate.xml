@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.util.Values">
+    <record name="selectCustomersInput" javaclass="com.wm.data.ISMemDataImpl">
+      <value name="lastNameFilter">Other lastName</value>
+      <value name="firstNameFilter">Other firstName</value>
+      <value name="statusFilter">INACTIVE</value>
+      <value name="birthDateFilterFrom">2001-01-01</value>
+      <value name="birthDateFilterTo">2001-12-31</value>
+      <value name="rowNumberFilterFrom">0</value>
+      <value name="rowNumberFilterTo">100</value>
+    </record>
+    <record name="selectCustomersOutput" javaclass="com.wm.data.ISMemDataImpl">
+      <array name="results" type="record" depth="1">
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="id">1dacf591-8e41-4d65-ad56-c06be1b6216a</value>
+          <value name="lastName">Other lastName</value>
+          <value name="firstName">Other firstName</value>
+          <value name="birthDate">2001-12-31</value>
+          <value name="status">INACTIVE            </value>
+        </record>
+      </array>
+      <number name="nbSelected" type="java.lang.Integer">1</number>
+      <value name="SQLStatement">select  t1.id, 
+        t1.lastName, 
+        t1.firstName, 
+        t1.birthDate, 
+        t1.status
+from    (select *, Row_Number() over (order by t.lastName asc, t.firstName asc, t.birthDate asc) as rowNumber 
+from public.customers t) as t1
+where id is not null
+AND t1.lastName ILIKE '%Other lastName%'
+AND t1.firstName ILIKE '%Other firstName%'
+AND t1.birthDate BETWEEN '2001-01-01' AND '2001-12-31'
+AND t1.status LIKE 'INACTIVE%'
+AND t1.rowNumber BETWEEN 0 AND 100</value>
+    </record>
+  </record>
+</IDataXMLCoder>

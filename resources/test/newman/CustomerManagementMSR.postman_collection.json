@@ -1,0 +1,665 @@
+{
+	"info": {
+		"_postman_id": "4549274d-968e-4760-b243-c70490c07f25",
+		"name": "CustomerManagementMSR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "No auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/customers",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"var actualId = jsonData.customer.id;",
+							"var actualLastName = jsonData.customer.lastName;",
+							"var actualFirstName = jsonData.customer.firstName;",
+							"var actualBirthDate = jsonData.customer.birthDate;",
+							"var actualStatus = jsonData.customer.status;",
+							"",
+							"pm.collectionVariables.set(\"id\", actualId);",
+							"",
+							"var expectedLastName = pm.collectionVariables.get(\"lastName\");",
+							"var expectedFirstName = pm.collectionVariables.get(\"firstName\");",
+							"var expectedBirthDate = pm.collectionVariables.get(\"birthDate\");",
+							"var expectedStatus = pm.collectionVariables.get(\"status\");",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Checking id\", function () {",
+							"    pm.expect(isUUID(actualId)).to.be.true;",
+							"});",
+							"",
+							"pm.test(\"Checking lastName\", function () {",
+							"    pm.expect(actualLastName).to.eql(expectedLastName);",
+							"});",
+							"",
+							"pm.test(\"Checking firstName\", function () {",
+							"    pm.expect(actualFirstName).to.eql(expectedFirstName);",
+							"});",
+							"",
+							"pm.test(\"Checking birthDate\", function () {",
+							"    pm.expect(actualBirthDate).to.eql(expectedBirthDate);",
+							"});",
+							"",
+							"pm.test(\"Checking status\", function () {",
+							"    pm.expect(actualStatus).to.eql(expectedStatus);",
+							"});",
+							"",
+							"",
+							"function isUUID ( uuid ) {",
+							"    let s = \"\" + uuid;",
+							"",
+							"    s = s.match('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$');",
+							"    if (s === null) {",
+							"      return false;",
+							"    }",
+							"    return true;",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"lastName\": \"{{lastName}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"birthDate\": \"{{birthDate}}\",\n    \"status\": \"{{status}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/customers",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"var actualId = jsonData.customer.id;",
+							"var actualLastName = jsonData.customer.lastName;",
+							"var actualFirstName = jsonData.customer.firstName;",
+							"var actualBirthDate = jsonData.customer.birthDate;",
+							"var actualStatus = jsonData.customer.status;",
+							"",
+							"var expectedId = pm.collectionVariables.get(\"id\");",
+							"var expectedLastName = pm.collectionVariables.get(\"lastName\");",
+							"var expectedFirstName = pm.collectionVariables.get(\"firstName\");",
+							"var expectedBirthDate = pm.collectionVariables.get(\"birthDate\");",
+							"var expectedStatus = pm.collectionVariables.get(\"status\");",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Checking id\", function () {",
+							"    pm.expect(actualId).to.eql(expectedId);",
+							"});",
+							"",
+							"pm.test(\"Checking lastName\", function () {",
+							"    pm.expect(actualLastName).to.eql(expectedLastName);",
+							"});",
+							"",
+							"pm.test(\"Checking firstName\", function () {",
+							"    pm.expect(actualFirstName).to.eql(expectedFirstName);",
+							"});",
+							"",
+							"pm.test(\"Checking birthDate\", function () {",
+							"    pm.expect(actualBirthDate).to.eql(expectedBirthDate);",
+							"});",
+							"",
+							"pm.test(\"Checking status\", function () {",
+							"    pm.expect(actualStatus).to.eql(expectedStatus);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/customers/{{id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"customers",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List customers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Checking id\", function () {",
+							"    pm.expect(jsonData.customers.length).not.to.eql(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/customers",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"var actualId = jsonData.customer.id;",
+							"var actualLastName = jsonData.customer.lastName;",
+							"var actualFirstName = jsonData.customer.firstName;",
+							"var actualBirthDate = jsonData.customer.birthDate;",
+							"var actualStatus = jsonData.customer.status;",
+							"",
+							"pm.collectionVariables.set(\"id\", actualId);",
+							"",
+							"var expectedId = pm.collectionVariables.get(\"id\");",
+							"var expectedLastName = pm.collectionVariables.get(\"lastName\");",
+							"var expectedFirstName = pm.collectionVariables.get(\"firstName\");",
+							"var expectedBirthDate = pm.collectionVariables.get(\"birthDate\");",
+							"var expectedStatus = pm.collectionVariables.get(\"newStatus\");",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Checking id\", function () {",
+							"    pm.expect(actualId).to.eql(expectedId);",
+							"});",
+							"",
+							"pm.test(\"Checking lastName\", function () {",
+							"    pm.expect(actualLastName).to.eql(expectedLastName);",
+							"});",
+							"",
+							"pm.test(\"Checking firstName\", function () {",
+							"    pm.expect(actualFirstName).to.eql(expectedFirstName);",
+							"});",
+							"",
+							"pm.test(\"Checking birthDate\", function () {",
+							"    pm.expect(actualBirthDate).to.eql(expectedBirthDate);",
+							"});",
+							"",
+							"pm.test(\"Checking status\", function () {",
+							"    pm.expect(actualStatus).to.eql(expectedStatus);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"{{id}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"birthDate\": \"{{birthDate}}\",\n    \"status\": \"{{newStatus}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/customers/{{id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"customers",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get customer (after update)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"var actualId = jsonData.customer.id;",
+							"var actualLastName = jsonData.customer.lastName;",
+							"var actualFirstName = jsonData.customer.firstName;",
+							"var actualBirthDate = jsonData.customer.birthDate;",
+							"var actualStatus = jsonData.customer.status;",
+							"",
+							"var expectedId = pm.collectionVariables.get(\"id\");",
+							"var expectedLastName = pm.collectionVariables.get(\"lastName\");",
+							"var expectedFirstName = pm.collectionVariables.get(\"firstName\");",
+							"var expectedBirthDate = pm.collectionVariables.get(\"birthDate\");",
+							"var expectedStatus = pm.collectionVariables.get(\"newStatus\");",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Checking id\", function () {",
+							"    pm.expect(actualId).to.eql(expectedId);",
+							"});",
+							"",
+							"pm.test(\"Checking lastName\", function () {",
+							"    pm.expect(actualLastName).to.eql(expectedLastName);",
+							"});",
+							"",
+							"pm.test(\"Checking firstName\", function () {",
+							"    pm.expect(actualFirstName).to.eql(expectedFirstName);",
+							"});",
+							"",
+							"pm.test(\"Checking birthDate\", function () {",
+							"    pm.expect(actualBirthDate).to.eql(expectedBirthDate);",
+							"});",
+							"",
+							"pm.test(\"Checking status\", function () {",
+							"    pm.expect(actualStatus).to.eql(expectedStatus);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/customers/{{id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"customers",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/customers/{{id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"customers",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get customer (after deletion)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/customers/{{id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"customers",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update customer (after deletion)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"{{id}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"birthDate\": \"{{birthDate}}\",\n    \"status\": \"{{newStatus}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/customers/{{id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"customers",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete customer (already deleted)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/customers/{{id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"customers",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{userPassword}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{userName}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "lastName",
+			"value": "Smith",
+			"type": "default"
+		},
+		{
+			"key": "firstName",
+			"value": "Linda",
+			"type": "default"
+		},
+		{
+			"key": "birthDate",
+			"value": "2001-12-15",
+			"type": "default"
+		},
+		{
+			"key": "status",
+			"value": "ACTIVE",
+			"type": "default"
+		},
+		{
+			"key": "id",
+			"value": "480186f8-d79e-4db0-a5be-f547b86cb21e"
+		},
+		{
+			"key": "newStatus",
+			"value": "INACTIVE",
+			"type": "default"
+		}
+	]
+}
