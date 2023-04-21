@@ -23,7 +23,7 @@ spec:
         app: customer-management
     spec:
       containers:
-        - image: staillansag/msr-customer-management:latest
+        - image: staillansag/msr-customer-management-v2:latest
           imagePullPolicy: Always
           name: customer-management-msr
           ports:

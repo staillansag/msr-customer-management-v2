@@ -37,7 +37,7 @@ echo "==================> BUILD_REASON = ${BUILD_REASON}"
 echo "Pushing tag ${crtTag}"
 docker push "${crtTag}"
 
-if [[ "${BUILD_SOURCEBRANCHNAME}" == "main" ]]; then
+if [[ "${BUILD_SOURCEBRANCHNAME}" == "master" ]]; then
   echo "Pushing tag ${IMAGE_TAG_BASE}"
   docker push "${IMAGE_TAG_BASE}"
 fi
