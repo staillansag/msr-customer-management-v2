@@ -7,7 +7,7 @@ echo "##vso[task.setvariable variable=ROLLBACK_REVISION;]${rollbackRevision}"
 imageTag="${IMAGE_TAG_BASE}:${IMAGE_MAJOR_VERSION}.${IMAGE_MINOR_VERSION}.${BUILD_BUILDID}"
 
 echo "Deploying new msr image"
-sed 's/customer\-management\:latest/customer\-management\:'${imageTag}'/g' ./deployment/kubernetes/01_msr-customer-management_deployment.yaml | kubectl apply -f - || exit 6
+sed 's/customer\-management\-v2\:latest/customer\-management\-v2\:'${imageTag}'/g' ./deployment/kubernetes/01_msr-customer-management_deployment.yaml | kubectl apply -f - || exit 6
 
 echo "Deploying msr service (in case it does not already exist)"
 kubectl apply -f ./deployment/kubernetes/02_msr-customer-management_service.yaml || exit 6
