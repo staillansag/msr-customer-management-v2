@@ -20,4 +20,4 @@ spec:
             service:
               name: mcgw-customer-management
               port:
-                number: 80
+                number: 443
