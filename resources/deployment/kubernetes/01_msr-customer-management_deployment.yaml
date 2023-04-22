@@ -34,6 +34,8 @@ spec:
               name: licenses
               readOnly: true
           env:
+            - name: SAG_IS_CONFIG_PROPERTIES
+              value: /opt/softwareag/IntegrationServer/packages/CustomerManagement/application.properties
             - name: DATASOURCE_CLASS
               value: org.postgresql.ds.PGSimpleDataSource
             - name: DB_USER
