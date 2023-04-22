@@ -30,10 +30,7 @@ stages:
     - script: chmod u+x ./resources/buildScripts/*.sh
       displayName: "Grant shell execution permissions"
 
-    - script: ./resources/buildScripts/02.connectAKS.sh
-      displayName: 'Connect to AKS'
-
-    - script: ./resources/buildScripts/04.build.sh
+    - script: ./resources/buildScripts/build.sh
       displayName: 'Build and push image'
 
 - stage: Deploy
@@ -54,7 +51,10 @@ stages:
     - script: chmod u+x ./resources/buildScripts/*.sh
       displayName: "Grant shell execution permissions"
 
-    - script: ./resources/buildScripts/06.deployKubernetes.sh
+    - script: ./resources/buildScripts/connectAKS.sh
+      displayName: 'Connect to AKS'
+
+    - script: ./resources/buildScripts/deployKubernetes.sh
       displayName: 'Deploy image to Kubernetes'
 
   - job: AutomatedTestsProd
@@ -77,7 +77,7 @@ stages:
     - script: chmod u+x ./resources/buildScripts/*.sh
       displayName: "Grant shell execution permissions"
       
-    - script: ./resources/buildScripts/88.automatedTests.sh
+    - script: ./resources/buildScripts/automatedTests.sh
       displayName: 'Perform automated tests'
 
   - job: RollbackKubernetesDeployment
@@ -96,5 +96,5 @@ stages:
     - script: chmod u+x ./resources/buildScripts/*.sh
       displayName: "Grant shell execution permissions"
 
-    - script: ./resources/buildScripts/90.rollbackKubernetesDeployment.sh
+    - script: ./resources/buildScripts/rollbackKubernetesDeployment.sh
       displayName: 'Rollback Kubernetes deployment'
