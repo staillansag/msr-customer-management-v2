@@ -10,7 +10,7 @@ then
     exit 1
   fi
 
-  newman run ./test/newman/CustomerManagementMSR.postman_collection.json \
+  newman run ./resources/test/newman/CustomerManagementMSR.postman_collection.json \
     -e ${POSTMANENVIRONMENTPRODMSR_SECUREFILEPATH} || exit 8
 else
   echo "Getting Postman environment file for Production environment..."
@@ -19,7 +19,7 @@ else
     exit 1
   fi
 
-  newman run ./test/newman/CustomerManagement.postman_collection.json \
+  newman run ./resources/test/newman/CustomerManagement.postman_collection.json \
     -e ${POSTMANENVIRONMENTPROD_SECUREFILEPATH} || exit 8
 fi
  
