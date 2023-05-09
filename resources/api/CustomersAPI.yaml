@@ -275,11 +275,10 @@ definitions:
         default: ACTIVE
       phoneNumber:
         type: string
-        format: date
         description: Customer phone number
       email:
         type: string
-        format: date
+        format: email
         description: Customer email address        
   putCustomerResponse:
     type: object

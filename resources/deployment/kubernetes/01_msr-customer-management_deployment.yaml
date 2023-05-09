@@ -58,11 +58,16 @@ spec:
                 configMapKeyRef:
                   name: environment-config
                   key: databaseServerPort
-            - name: DB_NAME
+            - name: DB_PORT
               valueFrom:
                 configMapKeyRef:
                   name: environment-config
-                  key: databaseName
+                  key: databaseServerPort
+            - name: JNDI_ALIAS_PROVIDER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: environment-config
+                  key: jndiAliasProviderUrl
           livenessProbe:
             tcpSocket:
               port: 5555
