@@ -10,6 +10,7 @@ pool:
 variables:
   - group: global-variables
   - group: customer-management-variables
+  - group: customer-management-options
 
 stages:
 
