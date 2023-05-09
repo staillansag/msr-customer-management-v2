@@ -12,3 +12,5 @@ USER sagadmin
 # files to be added to based image (includes configuration and package)
 
 ADD --chown=sagadmin . /opt/softwareag/IntegrationServer/packages/CustomerManagement
+ADD --chown=sagadmin resources/jndi /opt/softwareag/IntegrationServer/config/jndi
+ADD --chown=sagadmin resources/jms/jms.cnf /opt/softwareag/IntegrationServer/config/jms.cnf

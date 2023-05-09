@@ -168,6 +168,30 @@
           <null name="definitionName"/>
           <Boolean name="includeInRad">true</Boolean>
         </record>
+        <record name="phoneNumber" javaclass="com.wm.util.Values">
+          <value name="name">phoneNumber</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="email" javaclass="com.wm.util.Values">
+          <value name="name">email</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">true</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
       </record>
     </record>
     <record name="/customers/{customerId}_PUT_$response" javaclass="com.wm.util.Values">
