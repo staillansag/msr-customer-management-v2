@@ -35,7 +35,8 @@ paths:
                 "lastName": "Lyndon",
                 "firstName": "James",
                 "birthDate": "2001-10-01",
-                "status": "ACTIVE"
+                "status": "ACTIVE",
+                "email": "james.lyndon@company.com"
               }
           schema:
             $ref: '#/definitions/getCustomerResponse'
@@ -68,7 +69,8 @@ paths:
                 "lastName": "Lyndon",
                 "firstName": "James",
                 "birthDate": "2001-10-01",
-                "status": "ACTIVE"
+                "status": "ACTIVE",
+                "email": "james.lyndon@company.com"
               }
       responses:
         '200':
@@ -80,7 +82,8 @@ paths:
                 "lastName": "Lyndon",
                 "firstName": "James",
                 "birthDate": "2001-10-01",
-                "status": "ACTIVE"
+                "status": "ACTIVE",
+                "email": "james.lyndon@company.com"
               }
           schema:
             $ref: '#/definitions/putCustomerResponse'
@@ -168,7 +171,8 @@ paths:
                 "lastName": "Lyndon",
                 "firstName": "James",
                 "birthDate": "2001-10-01",
-                "status": "ACTIVE"
+                "status": "ACTIVE",
+                "email": "james.lyndon@company.com"
               }]
         '400':
           description: Bad request
@@ -193,7 +197,8 @@ paths:
                 "lastName": "Lyndon",
                 "firstName": "James",
                 "birthDate": "2001-10-01",
-                "status": "ACTIVE"
+                "status": "ACTIVE",
+                "email": "james.lyndon@company.com"
               }
       responses:
         '201':
@@ -205,7 +210,8 @@ paths:
                 "lastName": "Lyndon",
                 "firstName": "James",
                 "birthDate": "2001-10-01",
-                "status": "ACTIVE"
+                "status": "ACTIVE",
+                "email": "james.lyndon@company.com"
               }
           schema:
             $ref: '#/definitions/postCustomerResponse'
@@ -240,6 +246,7 @@ definitions:
     required:
       - firstName
       - lastName
+      - email
     properties:
       id:
         type: string
@@ -266,6 +273,14 @@ definitions:
           - ACTIVE
           - INACTIVE
         default: ACTIVE
+      phoneNumber:
+        type: string
+        format: date
+        description: Customer phone number
+      email:
+        type: string
+        format: date
+        description: Customer email address        
   putCustomerResponse:
     type: object
     required:
