@@ -122,7 +122,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"lastName\": \"{{lastName}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"birthDate\": \"{{birthDate}}\",\n    \"status\": \"{{status}}\"\n}",
+					"raw": "{\n    \"lastName\": \"{{lastName}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"birthDate\": \"{{birthDate}}\",\n    \"status\": \"{{status}}\",\n    \"email\": \"{{firstName}}.{{lastName}}@email.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -323,7 +323,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"{{id}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"birthDate\": \"{{birthDate}}\",\n    \"status\": \"{{newStatus}}\"\n}",
+					"raw": "{\n    \"id\": \"{{id}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"birthDate\": \"{{birthDate}}\",\n    \"status\": \"{{newStatus}}\",\n    \"email\": \"{{firstName}}.{{lastName}}@email.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -535,7 +535,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"{{id}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"birthDate\": \"{{birthDate}}\",\n    \"status\": \"{{newStatus}}\"\n}",
+					"raw": "{\n    \"id\": \"{{id}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"birthDate\": \"{{birthDate}}\",\n    \"status\": \"{{newStatus}}\",\n    \"email\": \"{{firstName}}.{{lastName}}@email.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

@@ -58,12 +58,12 @@ spec:
                 configMapKeyRef:
                   name: environment-config
                   key: databaseServerPort
-            - name: DB_PORT
+            - name: DB_NAME
               valueFrom:
                 configMapKeyRef:
                   name: environment-config
-                  key: databaseServerPort
-            - name: JNDI_ALIAS_PROVIDER_URL
+                  key: databaseName
+            - name: JNDI_ALIAS_PROVIDERURL
               valueFrom:
                 configMapKeyRef:
                   name: environment-config
