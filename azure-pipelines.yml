@@ -33,7 +33,7 @@ stages:
     - script: ./resources/buildScripts/build.sh
       displayName: 'Build and push image'
       env:
-        DOCKER_REGISTRY_SECRET: ${DOCKER_REGISTRY_SECRET}
+        DOCKER_REGISTRY_SECRET: ${SECRET_DOCKER_REGISTRY_SECRET}
 
 - stage: Deploy
   dependsOn: Build

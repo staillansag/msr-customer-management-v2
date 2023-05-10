@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Password = ${DOCKER_REGISTRY_SECRET}" 
+
 echo "Logging in to repository ${DOCKER_REGISTRY_URI}"
 docker login -u "${DOCKER_REGISTRY_ID}" -p "${DOCKER_REGISTRY_SECRET}" "${DOCKER_REGISTRY_URI}"  || exit 3
 
