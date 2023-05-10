@@ -33,7 +33,7 @@ stages:
     - script: ./resources/buildScripts/build.sh
       displayName: 'Build and push image'
       env:
-        DOCKER_REGISTRY_SECRET: $(SECRET_DOCKER_REGISTRY_SECRET)
+        DOCKER_REGISTRY_SECRET: $(DOCKER_REGISTRY_SECRET)
 
 - stage: Deploy
   dependsOn: Build
@@ -58,6 +58,10 @@ stages:
 
     - script: ./resources/buildScripts/deployKubernetes.sh
       displayName: 'Deploy image to Kubernetes'
+      env:
+        API_GATEWAY_PASSWORD: $(API_GATEWAY_PASSWORD)
+        DB_PASSWORD: $(DB_PASSWORD)
+        IO_INT_PASSWORD: $(IO_INT_PASSWORD)
 
   - job: AutomatedTestsProd
     dependsOn: DeployKubernetes
