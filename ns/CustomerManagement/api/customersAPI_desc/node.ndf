@@ -336,8 +336,8 @@
               <null name="definitionName"/>
               <Boolean name="includeInRad">true</Boolean>
             </record>
-            <record name="pageNumber" javaclass="com.wm.util.Values">
-              <value name="name">pageNumber</value>
+            <record name="email" javaclass="com.wm.util.Values">
+              <value name="name">email</value>
               <value name="source">QUERY</value>
               <value name="type">STRING</value>
               <null name="description"/>
@@ -350,6 +350,18 @@
             </record>
             <record name="pageSize" javaclass="com.wm.util.Values">
               <value name="name">pageSize</value>
+              <value name="source">QUERY</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="pageNumber" javaclass="com.wm.util.Values">
+              <value name="name">pageNumber</value>
               <value name="source">QUERY</value>
               <value name="type">STRING</value>
               <null name="description"/>

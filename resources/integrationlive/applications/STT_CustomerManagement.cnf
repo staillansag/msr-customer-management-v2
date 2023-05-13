@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <value name="name">STT_CustomerManagement</value>
+    <value name="description">Customer Management microservice</value>
+    <number name="lastUploadedTime" type="java.lang.Long">1683903394573</number>
+    <number name="lastSavedTime" type="java.lang.Long">1683903396821</number>
+    <array name="packages" type="record" depth="1">
+      <record javaclass="com.wm.data.ISMemDataImpl">
+        <value name="package">CustomerManagement</value>
+        <array name="details" type="record" depth="1">
+          <record javaclass="com.wm.data.ISMemDataImpl">
+            <value name="serviceName">CustomerManagement.services:createCustomer</value>
+            <value name="displayName">createCustomer</value>
+            <jboolean name="isShared">true</jboolean>
+            <jboolean name="useBatch">false</jboolean>
+          </record>
+          <record javaclass="com.wm.data.ISMemDataImpl">
+            <value name="serviceName">CustomerManagement.services:deleteCustomer</value>
+            <value name="displayName">deleteCustomer</value>
+            <jboolean name="isShared">true</jboolean>
+            <jboolean name="useBatch">false</jboolean>
+          </record>
+          <record javaclass="com.wm.data.ISMemDataImpl">
+            <value name="serviceName">CustomerManagement.services:getCustomer</value>
+            <value name="displayName">getCustomer</value>
+            <jboolean name="isShared">true</jboolean>
+            <jboolean name="useBatch">false</jboolean>
+          </record>
+          <record javaclass="com.wm.data.ISMemDataImpl">
+            <value name="serviceName">CustomerManagement.services:listCustomers</value>
+            <value name="displayName">listCustomers</value>
+            <jboolean name="isShared">true</jboolean>
+            <jboolean name="useBatch">false</jboolean>
+          </record>
+          <record javaclass="com.wm.data.ISMemDataImpl">
+            <value name="serviceName">CustomerManagement.services:updateCustomer</value>
+            <value name="displayName">updateCustomer</value>
+            <jboolean name="isShared">true</jboolean>
+            <jboolean name="useBatch">false</jboolean>
+          </record>
+        </array>
+      </record>
+    </array>
+    <array name="connections" type="record" depth="1">
+      <record javaclass="com.wm.data.ISMemDataImpl">
+        <value name="connectionName">default_account</value>
+        <value name="connectionStage">stage00</value>
+        <value name="tenantAlias">default</value>
+      </record>
+    </array>
+    <array name="tenantAliases" type="record" depth="1">
+      <record javaclass="com.wm.data.ISMemDataImpl">
+        <value name="tenantAlias">default</value>
+      </record>
+    </array>
+  </record>
+</IDataXMLCoder>
