@@ -68,6 +68,21 @@ spec:
                 configMapKeyRef:
                   name: environment-config
                   key: jndiAliasProviderUrl
+            - name: IO_INT_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: environment-config
+                  key: wmioIntegrationUrl
+            - name: IO_INT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: environment-secrets
+                  key: wmioIntegrationUser
+            - name: IO_INT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: environment-secrets
+                  key: wmioIntegrationPassword
           livenessProbe:
             tcpSocket:
               port: 5555
