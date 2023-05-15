@@ -1,0 +1,106 @@
+# My News Service build pipeline
+
+trigger: 
+  - master
+  - feature*
+
+pool:
+  name: Default
+
+variables:
+  - group: global-variables
+  - group: customer-management-options
+
+stages:
+
+- stage: Build
+
+  jobs:
+
+  - job: BuildImage
+
+    steps:
+
+    - task: DownloadSecureFile@1
+      displayName: 'Download test environment file'
+      name: dockerEnv
+      inputs:
+        secureFile: 'qa.env'  
+
+    - script: chmod u+x ./resources/buildScripts/*.sh
+      displayName: "Grant shell execution permissions"
+
+    - script: ./resources/buildScripts/build.sh
+      displayName: 'Build and push image'
+      env:
+        DOCKER_REGISTRY_SECRET: $(DOCKER_REGISTRY_SECRET)
+
+- stage: Deploy
+  dependsOn: Build
+
+  jobs:
+
+  - job: DeployKubernetes
+
+    steps:  
+
+    - task: DownloadSecureFile@1
+      name: kubernetesSecrets
+      displayName: 'Download kubernetes secrets'
+      inputs:
+        secureFile: 'kubernetes-secrets.yaml'
+
+    - script: chmod u+x ./resources/buildScripts/*.sh
+      displayName: "Grant shell execution permissions"
+
+    - script: ./resources/buildScripts/connectAKS.sh
+      displayName: 'Connect to AKS'
+
+    - script: ./resources/buildScripts/deployKubernetesSidecar.sh
+      displayName: 'Deploy image to Kubernetes'
+      env:
+        API_GATEWAY_PASSWORD: $(API_GATEWAY_PASSWORD)
+        DB_PASSWORD: $(DB_PASSWORD)
+        IO_INT_PASSWORD: $(IO_INT_PASSWORD)
+
+  - job: AutomatedTestsProd
+    dependsOn: DeployKubernetes
+
+    steps:
+
+    - task: DownloadSecureFile@1
+      name: postmanEnvironmentProd
+      displayName: 'Download Postman Prod environment file'
+      inputs:
+        secureFile: 'CustomerManagement-prod.postman_environment.json'
+
+    - task: DownloadSecureFile@1
+      name: postmanEnvironmentProdMsr
+      displayName: 'Download Postman Prod environment file for standalone MSR'
+      inputs:
+        secureFile: 'CustomerManagement-msr-prod.postman_environment.json'
+
+    - script: chmod u+x ./resources/buildScripts/*.sh
+      displayName: "Grant shell execution permissions"
+      
+    - script: ./resources/buildScripts/automatedTests.sh
+      displayName: 'Perform automated tests'
+
+  - job: RollbackKubernetesDeployment
+    dependsOn: 
+    - DeployKubernetes
+    - AutomatedTestsProd
+    condition: |
+      or
+      (
+        eq(dependencies.DeployKubernetes.result, 'Failed'),
+        eq(dependencies.AutomatedTestsProd.result, 'Failed')
+      )
+
+    steps:
+
+    - script: chmod u+x ./resources/buildScripts/*.sh
+      displayName: "Grant shell execution permissions"
+
+    - script: ./resources/buildScripts/rollbackKubernetesDeployment.sh
+      displayName: 'Rollback Kubernetes deployment'

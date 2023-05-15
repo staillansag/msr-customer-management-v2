@@ -70,64 +70,66 @@ spec:
             port: 9090
           initialDelaySeconds: 5
           periodSeconds: 10
-      - image: azdevopssttacr.azurecr.io/msr-customer-management:latest
+      - image: staillansag/msr-customer-management-v2:latest
         imagePullPolicy: Always
         name: customer-management-msr
         ports:
-        - name: metrics
-          containerPort: 5555
+          - name: metrics
+            containerPort: 5555
         volumeMounts:
-        - mountPath: "/tmp/license"
-          name: licenses
-          readOnly: true
+          - mountPath: "/tmp/license"
+            name: licenses
+            readOnly: true
         env:
-        - name: DATASOURCE_CLASS
-          value: org.postgresql.ds.PGSimpleDataSource
-        - name: DB_USER
-          valueFrom:
-            secretKeyRef:
-              name: environment-secrets
-              key: databaseUser
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: environment-secrets
-              key: databasePassword
-        - name: DB_SERVERNAME
-          valueFrom:
-            configMapKeyRef:
-              name: environment-config
-              key: databaseServerName        
-        - name: DB_PORT
-          valueFrom:
-            configMapKeyRef:
-              name: environment-config
-              key: databaseServerPort    
-        - name: DB_NAME
-          valueFrom:
-            configMapKeyRef:
-              name: environment-config
-              key: databaseName    
-        - name: MSR_URL
-          valueFrom:
-            configMapKeyRef:
-              name: environment-config
-              key: domainName
-        - name: IO_INT_URL
-          valueFrom:
-            configMapKeyRef:
-              name: environment-config
-              key: wmioIntegrationUrl
-        - name: IO_INT_USER
-          valueFrom:
-            secretKeyRef:
-              name: environment-secrets
-              key: wmioIntegrationUser
-        - name: IO_INT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: environment-secrets
-              key: wmioIntegrationPassword
+          - name: SAG_IS_CONFIG_PROPERTIES
+            value: /opt/softwareag/IntegrationServer/packages/CustomerManagement/application.properties
+          - name: DATASOURCE_CLASS
+            value: org.postgresql.ds.PGSimpleDataSource
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: environment-secrets
+                key: databaseUser
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: environment-secrets
+                key: databasePassword
+          - name: DB_SERVERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: environment-config
+                key: databaseServerName
+          - name: DB_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: environment-config
+                key: databaseServerPort
+          - name: DB_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: environment-config
+                key: databaseName
+          - name: JNDI_ALIAS_PROVIDERURL
+            valueFrom:
+              configMapKeyRef:
+                name: environment-config
+                key: jndiAliasProviderUrl
+          - name: IO_INT_URL
+            valueFrom:
+              configMapKeyRef:
+                name: environment-config
+                key: wmioIntegrationUrl
+          - name: IO_INT_USER
+            valueFrom:
+              secretKeyRef:
+                name: environment-secrets
+                key: wmioIntegrationUser
+          - name: IO_INT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: environment-secrets
+                key: wmioIntegrationPassword
         livenessProbe:
           tcpSocket:
             port: 5555
@@ -140,10 +142,8 @@ spec:
           periodSeconds: 15
           failureThreshold: 12
       volumes:
-      - name: licenses
-        secret:
-          secretName: licenses
+        - name: licenses
+          secret:
+            secretName: licenses
       imagePullSecrets:
-      - name: sagregcred
-      - name: acrregcred
-
+        - name: acrregcred
