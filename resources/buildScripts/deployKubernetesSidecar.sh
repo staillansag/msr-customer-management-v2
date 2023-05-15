@@ -34,7 +34,7 @@ echo "Deploying msr service (in case it does not already exist)"
 kubectl apply -f ./resources/deployment/kubernetes-side-car/02_msr-customer-management_service.yaml || exit 6
 
 echo "Deploying ingress"
-kubectl apply -f ./resources/deployment/kubernetes/99_ingress.yaml || exit 6
+kubectl apply -f ./resources/deployment/kubernetes-side-car/99_ingress.yaml || exit 6
 
 echo "Waiting for deployment to complete"
 kubectl rollout status deployment customer-management --timeout=300s && echo "Deployment complete" || exit 6
