@@ -1,9 +1,5 @@
 # My News Service build pipeline
 
-trigger: 
-  - master
-  - feature*
-
 pool:
   name: Default
 

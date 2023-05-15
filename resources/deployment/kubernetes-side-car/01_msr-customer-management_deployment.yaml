@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: customer-management-mcgw
-        image: azdevopssttacr.azurecr.io/microgateway:10.15.0.0.1
+        image: staillansag/webmethods-microgateway:10.15.0.5
         ports:
         - name: metrics
           containerPort: 9090
@@ -60,6 +60,8 @@ spec:
           value: "true"
         - name: mggw_applications_sync_polling_interval_secs
           value: "10"
+        - name: mggw_access_url
+          value: https://customers.sttlab.eu
         livenessProbe:
           tcpSocket:
             port: 9090
