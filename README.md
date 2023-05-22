@@ -34,7 +34,7 @@ We follow the recommended layered approach:
 
 There's not much difference between an API implemented in the "traditional" Integration Server and one implemented in a Microservice Runtime. It's the configuration, packaging and deployment that differ.
 
-## Microservice configuration
+## Microservice external configuration
 
 We want our image to be "environment agnostic". The very same image will go to QA, UAT and later Production.
 Everything that is environment specific needs to be externalized: connection to backend APIs, databases, messaging brokers, etc.
@@ -46,3 +46,39 @@ There are two ways to provide this file to the container:
 - or it can be inside the image and point to environment variables that are passed to the container when it is launched
 
 We use the second option here.
+
+In both cases, we need to pass the location of the properties file to the MSR container using the SAG_IS_CONFIG_PROPERTIES environment variable.
+
+## Microservice build and push
+
+A Dockerfile is provided to build the container image.
+The base image is staillansag/webmethods-microservicesruntime:10.15.0.2-jdbc, which I created myself. It's the base MSR image provided in https://containers/softwareag.com, to which I have added the WmJDBCAdapter package along with the required JAR drivers.
+
+In the Dockerfile we copy the content of the github repo (the content of the webMethods package), two configuration files related to JNDI and JMS and a few configuration files related to the hybrid integration with webmethods.io
+
+The Github repo also contains some assets that are not meant to be part of the Docker image, so we use a .dockerignore file to ensure we don't place things like the Kubernetes deployment manisfests, README pictures or CI/CD scripts into the image.
+
+You would then push the image to any registry of your liking. It's a Docker image like any other.
+
+## Microgateway configuration
+
+
+## Docker deployment
+
+
+## Kubernetes deployment
+
+### Side car deployment
+
+
+### Microgateway and MSR as standalone deployments
+
+
+## Monitoring with Prometheus and Grafana
+
+
+## Agregation of application logs using FluentD
+
+
+## CI/CD with Azure Pipelines (and Newman for the automated tests)
+
