@@ -4,7 +4,7 @@ This repo contains various assets to showcase the use of the webMethods Microser
 The microservice exposes a REST API that is relayed and secured by the webMethods microgateway.
 It also publishes an event to a Universal Messaging JMS destination each time a customer is updated through the API, so that interested applications (subscribers) are made aware of the changes.
 
-![High level architecture]([./resources/images/Architecture.png))
+![High level architecture](./resources/images/Architecture.png)
 
 We have:
 - the content of the webMethods package itself
