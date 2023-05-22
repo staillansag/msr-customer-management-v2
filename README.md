@@ -6,6 +6,7 @@ It also publishes an event to a Universal Messaging JMS destination each time a 
 
 ![High level architecture](./resources/images/Architecture.png)
 
+The microservice also connects to a webmethods.io Integration environment (not represented in the picture), making it possible to call the customer management flow services from the iPaaS using the hybrid integration technology.
 The microgateway connects to an external API Gateway (not represented in the picture) to fetch its configuration.
 Both the microgateway and the microservice runtime expose metrics endpoints that are periodically scrapped by Prometheus.
 
