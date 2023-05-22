@@ -90,3 +90,11 @@ You would then push the image to any registry of your liking. It's a Docker imag
 
 ## External dependencies
 
+### Postgres database
+
+
+### Universal messaging
+
+
+### API gateway
+
