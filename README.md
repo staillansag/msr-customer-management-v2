@@ -6,6 +6,9 @@ It also publishes an event to a Universal Messaging JMS destination each time a 
 
 ![High level architecture](./resources/images/Architecture.png)
 
+The microgateway connects to an external API Gateway (not represented in the picture) to fetch its configuration.
+Both the microgateway and the microservice runtime expose metrics endpoints that are periodically scrapped by Prometheus.
+
 We have:
 - the content of the webMethods package itself
 - the application.properties file, which allows the configuration of various MSR resources (JDBC adapter, JNDI & JMS settings, etc) using environment variables
