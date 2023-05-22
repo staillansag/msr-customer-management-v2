@@ -29,7 +29,7 @@ We follow the recommended layered approach:
 - a customerCanonical document type defining the Customer object
 - a jdbc folder containing the JDBC adapter services
 - a service folder containing the flow services, which invoke the JDBC adapter services to access the database and use the Customer document type
-- an API layer containing the REST API descriptor and the mapping between the API methods and the flow services
+- an API folder containing the REST API descriptor and the mapping between the API methods and the flow services
 
 There's not much difference between an API implemented in the "traditional" Integration Server and one implemented in a Microservice Runtime. It's the configuration, packaging and deployment that differ.
 
