@@ -123,6 +123,8 @@ spec:
               configMapKeyRef:
                 name: environment-config
                 key: databaseName
+          - name: JDBC_POOL_SIZE
+            value: 20
           - name: JNDI_ALIAS_PROVIDERURL
             valueFrom:
               configMapKeyRef:
