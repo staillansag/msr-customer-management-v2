@@ -29,6 +29,11 @@ spec:
         ports:
         - name: metrics
           containerPort: 9090
+        resources:
+          requests:
+            cpu: 300m
+          limits:
+            cpu: 500m
         env:
         - name: mcgw_api_gateway_url
           valueFrom:
@@ -79,6 +84,11 @@ spec:
         ports:
           - name: metrics
             containerPort: 5555
+        resources:
+          requests:
+            cpu: 300m
+          limits:
+            cpu: 500m
         volumeMounts:
           - mountPath: "/tmp/license"
             name: licenses
@@ -129,6 +139,18 @@ spec:
                 name: environment-secrets
                 key: wmioIntegrationUser
           - name: IO_INT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: environment-secrets
+                key: wmioIntegrationPassword
+          - name: LOGAPI_URL
+            value: https://presalesemeadev.int-aws-de.webmethods.io/integration/restv2/development/flc33dabcfa4fadd601818f7/logAPI/events
+          - name: LOGAPI_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: environment-secrets
+                key: wmioIntegrationUser
+          - name: LOGAPI_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: environment-secrets

@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "5be53766-f79e-4e5d-b600-ac79dda3d691",
+		"name": "CustomerManagementLoad",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List customers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "x-gateway-apikey",
+						"value": "7d78bb1c-2c1a-41fc-b66e-6b39d0246a9f",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://customers.sttlab.eu/gateway/CustomersAPI/2.0/customers",
+					"protocol": "https",
+					"host": [
+						"customers",
+						"sttlab",
+						"eu"
+					],
+					"path": [
+						"gateway",
+						"CustomersAPI",
+						"2.0",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "x-gateway-apikey",
+						"value": "7d78bb1c-2c1a-41fc-b66e-6b39d0246a9f",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://customers.sttlab.eu/gateway/CustomersAPI/2.0/customers/9b32e526-ddbd-488b-873c-b49a9a51fe90",
+					"protocol": "https",
+					"host": [
+						"customers",
+						"sttlab",
+						"eu"
+					],
+					"path": [
+						"gateway",
+						"CustomersAPI",
+						"2.0",
+						"customers",
+						"9b32e526-ddbd-488b-873c-b49a9a51fe90"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{apiKey}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "x-gateway-apikey",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "lastName",
+			"value": "Smith",
+			"type": "default"
+		},
+		{
+			"key": "firstName",
+			"value": "Linda",
+			"type": "default"
+		},
+		{
+			"key": "birthDate",
+			"value": "2001-12-15",
+			"type": "default"
+		},
+		{
+			"key": "status",
+			"value": "ACTIVE",
+			"type": "default"
+		},
+		{
+			"key": "id",
+			"value": "480186f8-d79e-4db0-a5be-f547b86cb21e"
+		},
+		{
+			"key": "newStatus",
+			"value": "INACTIVE",
+			"type": "default"
+		}
+	]
+}
