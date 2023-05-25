@@ -5,7 +5,7 @@ metadata:
     app: customer-management
   name: customer-management
 spec:
-  replicas: 2
+  replicas: 1
   strategy:
       type: RollingUpdate
       rollingUpdate:
