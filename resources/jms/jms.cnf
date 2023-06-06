@@ -6,7 +6,7 @@
       <record javaclass="com.wm.data.ISMemDataImpl">
         <value name="aliasName">DEFAULT_IS_JMS_CONNECTION</value>
         <value name="description">system generated JMS connection alias</value>
-        <value name="clientID">DEFAULT_IS_JMS_CLIENT</value>
+        <value name="clientID">CustomerManagement_JMS</value>
         <value name="user">Administrator</value>
         <value name="handle">wm.is.admin.jmsConnectionAlias.DEFAULT_IS_JMS_CONNECTION</value>
         <value name="classLoader">INTEGRATION_SERVER</value>
@@ -45,6 +45,46 @@
         <value name="providerVersion">10.15.0 Build 10.15.0.0.496 August 31 2022</value>
         <number name="providerMajorVersion" type="java.lang.Integer">10</number>
         <number name="providerMinorVersion" type="java.lang.Integer">15</number>
+      </record>
+      <record javaclass="com.wm.data.ISMemDataImpl">
+        <value name="aliasName">DEFAULT_IS_JMS_CONNECTION</value>
+        <value name="description">system generated JMS connection alias</value>
+        <value name="clientID">DEFAULT_IS_JMS_CLIENT</value>
+        <null name="user"/>
+        <value name="handle">wm.is.admin.jmsConnectionAlias.DEFAULT_IS_JMS_CONNECTION</value>
+        <value name="classLoader">INTEGRATION_SERVER</value>
+        <value name="enabled">false</value>
+        <value name="csqSize">-1</value>
+        <value name="csqDrainInOrder">true</value>
+        <value name="optTempQueueCreate">true</value>
+        <value name="transactionType">0</value>
+        <value name="systemGenerated">true</value>
+        <value name="manageDestinations">true</value>
+        <value name="allowNewConnectionPerTrigger">false</value>
+        <value name="producerCachingMode">0</value>
+        <value name="producerSessionPoolSize">0</value>
+        <value name="producerSessionPoolMinSize">0</value>
+        <value name="cacheProducersPoolSize">0</value>
+        <value name="cacheProducersPoolMinSize">0</value>
+        <value name="cacheProducersQueueList"></value>
+        <value name="cacheProducersTopicList"></value>
+        <number name="poolTimeout" type="java.lang.Integer">60000</number>
+        <number name="producerMaxRetryAttempts" type="java.lang.Long">0</number>
+        <number name="producerRetryInterval" type="java.lang.Long">0</number>
+        <jboolean name="allowReplyToConsumer">false</jboolean>
+        <value name="associationType">0</value>
+        <value name="jndi_jndiAliasName">DEFAULT_IS_JNDI_PROVIDER</value>
+        <value name="jndi_connectionFactoryLookupName">local_um</value>
+        <value name="jndi_connectionFactoryUpdateType">NONE</value>
+        <number name="jndi_connectionFactoryPollingInterval" type="java.lang.Integer">0</number>
+        <jboolean name="jndi_enableFollowTheMaster">true</jboolean>
+        <jboolean name="jndi_automaticallyCreateUMAdminObjects">false</jboolean>
+        <number name="um_loggingOutput" type="java.lang.Integer">0</number>
+        <jboolean name="um_producerMessageTracking">false</jboolean>
+        <jboolean name="um_consumerMessageTracking">false</jboolean>
+        <null name="um_producerIncludedStrings"/>
+        <null name="um_consumerIncludedStrings"/>
+        <value name="providerName">(Not Connected)</value>
       </record>
       <record javaclass="com.wm.data.ISMemDataImpl">
         <value name="aliasName">PE_NONTRANSACTIONAL_ALIAS</value>
