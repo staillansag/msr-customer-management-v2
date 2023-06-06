@@ -4,4 +4,9 @@ Dockerfile
 *.md
 .gitignore
 *.bak
+resources/api
+resources/buildScripts
 resources/deployment
+resources/images
+resources/monitoring
+resources/test
