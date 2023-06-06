@@ -4,8 +4,8 @@
   <record javaclass="com.wm.data.ISMemDataImpl">
     <array name="JMSConfiguration" type="record" depth="1">
       <record javaclass="com.wm.data.ISMemDataImpl">
-        <value name="aliasName">DEFAULT_IS_JMS_CONNECTION</value>
-        <value name="description">system generated JMS connection alias</value>
+        <value name="aliasName">CustomerManagement_JMS</value>
+        <value name="description">Customer management JMS connection alias</value>
         <value name="clientID">CustomerManagement_JMS</value>
         <value name="user">Administrator</value>
         <value name="handle">wm.is.admin.jmsConnectionAlias.DEFAULT_IS_JMS_CONNECTION</value>
