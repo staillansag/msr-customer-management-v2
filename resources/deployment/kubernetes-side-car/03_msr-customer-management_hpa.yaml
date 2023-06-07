@@ -9,4 +9,4 @@ spec:
     name: customer-management
   minReplicas: 1
   maxReplicas: 3
-  targetCPUUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 75

@@ -11,7 +11,7 @@ spec:
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 0
-  minReadySeconds: 60
+  minReadySeconds: 0
   selector:
     matchLabels:
       app: customer-management
@@ -83,6 +83,13 @@ spec:
                 secretKeyRef:
                   name: environment-secrets
                   key: wmioIntegrationPassword
+          resources:
+            requests:
+              cpu: 300m
+              memory: 500Mi
+            limits:
+              cpu: 500m
+              memory: 1000Mi
           livenessProbe:
             tcpSocket:
               port: 5555
@@ -92,11 +99,10 @@ spec:
             tcpSocket:
               port: 5555
             initialDelaySeconds: 5
-            periodSeconds: 15
-            failureThreshold: 12
+            periodSeconds: 5
+            failureThreshold: 24
       volumes:
         - name: licenses
           secret:
             secretName: licenses
-      imagePullSecrets:
-        - name: acrregcred
+

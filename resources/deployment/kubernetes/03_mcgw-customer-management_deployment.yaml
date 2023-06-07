@@ -56,9 +56,9 @@ spec:
           value: endpoint
         - name: mcgw_aliases_customermanagement_be_url_endPointURI
           value: http://msr-customer-management/customer-management
-        - name: mggw_applications_sync_enabled
+        - name: mcgw_applications_sync_enabled
           value: "true"
-        - name: mggw_applications_sync_polling_interval_secs
+        - name: mcgw_applications_sync_polling_interval_secs
           value: "10"
         livenessProbe:
           tcpSocket:
