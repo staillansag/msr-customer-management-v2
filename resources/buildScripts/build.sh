@@ -27,6 +27,3 @@ docker logout "${DOCKER_REGISTRY_URI}"
 
 echo "Push completed"
 
-echo "Cleaning docker container"
-docker stop ${dockerId}
-docker rm ${dockerId}
