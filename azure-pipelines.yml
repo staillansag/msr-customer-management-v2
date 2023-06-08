@@ -17,12 +17,6 @@ stages:
 
     steps:
 
-    - task: DownloadSecureFile@1
-      displayName: 'Download test environment file'
-      name: dockerEnv
-      inputs:
-        secureFile: 'qa.env'  
-
     - script: chmod u+x ./resources/buildScripts/*.sh
       displayName: "Grant shell execution permissions"
 
@@ -39,12 +33,6 @@ stages:
   - job: DeployKubernetes
 
     steps:  
-
-    - task: DownloadSecureFile@1
-      name: kubernetesSecrets
-      displayName: 'Download kubernetes secrets'
-      inputs:
-        secureFile: 'kubernetes-secrets.yaml'
 
     - script: chmod u+x ./resources/buildScripts/*.sh
       displayName: "Grant shell execution permissions"

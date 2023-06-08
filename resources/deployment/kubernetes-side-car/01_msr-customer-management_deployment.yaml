@@ -170,8 +170,8 @@ spec:
           tcpSocket:
             port: 5555
           initialDelaySeconds: 5
-          periodSeconds: 15
-          failureThreshold: 12
+          periodSeconds: 5
+          failureThreshold: 24
       volumes:
         - name: licenses
           secret:

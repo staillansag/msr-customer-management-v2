@@ -21,12 +21,6 @@ stages:
 
     steps:
 
-    - task: DownloadSecureFile@1
-      displayName: 'Download test environment file'
-      name: dockerEnv
-      inputs:
-        secureFile: 'qa.env'  
-
     - script: chmod u+x ./resources/buildScripts/*.sh
       displayName: "Grant shell execution permissions"
 
@@ -43,12 +37,6 @@ stages:
   - job: DeployKubernetes
 
     steps:  
-
-    - task: DownloadSecureFile@1
-      name: kubernetesSecrets
-      displayName: 'Download kubernetes secrets'
-      inputs:
-        secureFile: 'kubernetes-secrets.yaml'
 
     - script: chmod u+x ./resources/buildScripts/*.sh
       displayName: "Grant shell execution permissions"
@@ -73,12 +61,6 @@ stages:
       displayName: 'Download Postman Prod environment file'
       inputs:
         secureFile: 'CustomerManagement-prod.postman_environment.json'
-
-    - task: DownloadSecureFile@1
-      name: postmanEnvironmentProdMsr
-      displayName: 'Download Postman Prod environment file for standalone MSR'
-      inputs:
-        secureFile: 'CustomerManagement-msr-prod.postman_environment.json'
 
     - script: chmod u+x ./resources/buildScripts/*.sh
       displayName: "Grant shell execution permissions"
