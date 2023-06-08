@@ -67,6 +67,8 @@ stages:
       
     - script: ./resources/buildScripts/automatedTests.sh
       displayName: 'Perform automated tests'
+      env:
+        API_KEY: $(API_KEY)
 
   - job: RollbackKubernetesDeployment
     dependsOn: 
