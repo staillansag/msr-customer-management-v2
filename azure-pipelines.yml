@@ -58,17 +58,13 @@ stages:
       inputs:
         secureFile: 'CustomerManagement-prod.postman_environment.json'
 
-    - task: DownloadSecureFile@1
-      name: postmanEnvironmentProdMsr
-      displayName: 'Download Postman Prod environment file for standalone MSR'
-      inputs:
-        secureFile: 'CustomerManagement-msr-prod.postman_environment.json'
-
     - script: chmod u+x ./resources/buildScripts/*.sh
       displayName: "Grant shell execution permissions"
       
     - script: ./resources/buildScripts/automatedTests.sh
       displayName: 'Perform automated tests'
+      env:
+        API_KEY: $(API_KEY)
 
   - job: RollbackKubernetesDeployment
     dependsOn: 
