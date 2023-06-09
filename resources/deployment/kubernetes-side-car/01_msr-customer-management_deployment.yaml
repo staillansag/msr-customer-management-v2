@@ -176,5 +176,3 @@ spec:
         - name: licenses
           secret:
             secretName: licenses
-      imagePullSecrets:
-        - name: acrregcred

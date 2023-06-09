@@ -7,23 +7,20 @@ echo "##vso[task.setvariable variable=ROLLBACK_REVISION;]${rollbackRevision}"
 echo "(Re)Creating environment specific Kubernetes config map"
 kubectl delete configmap environment-config
 kubectl create configmap environment-config \
-	 --from-literal=apiGatewayUrl=${API_GATEWAY_URL} \
-	 --from-literal=wmioIntegrationUrl=${WMIO_INT_URL} \
-         --from-literal=domainName=${DOMAIN_NAME} \
-         --from-literal=databaseServerName=${DB_SERVERNAME} \
-         --from-literal=databaseServerPort=${DB_PORT} \
-         --from-literal=databaseName=${DB_NAME} \
-		 --from-literal=jndiAliasProviderUrl=${JNDI_ALIAS_PROVIDER_URL} || exit 6
+    --from-literal=apiGatewayUrl=${API_GATEWAY_URL} \
+    --from-literal=domainName=${DOMAIN_NAME} \
+    --from-literal=databaseServerName=${DB_SERVERNAME} \
+    --from-literal=databaseServerPort=${DB_PORT} \
+    --from-literal=databaseName=${DB_NAME} \
+    --from-literal=jndiAliasProviderUrl=${JNDI_ALIAS_PROVIDER_URL} || exit 6
 
 echo "(Re)Creating environment specific Kubernetes secrets"
 kubectl delete secret generic environment-secrets
 kubectl create secret generic environment-secrets \
-	 --from-literal=databaseUser=${DB_USER} \
-	 --from-literal=databasePassword=${DB_PASSWORD} \
-         --from-literal=wmioIntegrationUser=${IO_INT_USER} \
-         --from-literal=wmioIntegrationPassword=${IO_INT_PASSWORD} \
-         --from-literal=apiGatewayUser=${API_GATEWAY_USER} \
-         --from-literal=apiGatewayPassword=${API_GATEWAY_PASSWORD}
+	--from-literal=databaseUser=${DB_USER} \
+	--from-literal=databasePassword=${DB_PASSWORD} \
+    --from-literal=apiGatewayUser=${API_GATEWAY_USER} \
+    --from-literal=apiGatewayPassword=${API_GATEWAY_PASSWORD}
 
 imageTag="${IMAGE_TAG_BASE}:${IMAGE_MAJOR_VERSION}.${IMAGE_MINOR_VERSION}.${BUILD_BUILDID}"
 
