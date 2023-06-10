@@ -12,7 +12,7 @@ This repo contains various assets to showcase the use of the webMethods Microser
 
 [Microservice implementation](./resources/documentation/MicroserviceImplementation.md)
 
-[Microgateway implementation (todo)](./resources/documentation/MicrogatewayImplementation.md)
+[Microgateway implementation (todo)](./resources/documentation/Microgateway.md)
 
 [Running the microservice in Docker (todo)](./resources/documentation/DockerDeployment.md)
 
