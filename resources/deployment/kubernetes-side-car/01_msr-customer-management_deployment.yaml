@@ -22,6 +22,7 @@ spec:
       labels:
         app: customer-management
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
       - name: customer-management-mcgw
         image: staillansag/webmethods-microgateway:10.15.0.5
