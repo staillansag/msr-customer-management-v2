@@ -1,4 +1,4 @@
-FROM staillansag/webmethods-microservicesruntime:10.11.0.2-jdbc 
+FROM staillansag/webmethods-microservicesruntime:10.15.0.2-jdbc 
 
 EXPOSE 5555
 EXPOSE 5543

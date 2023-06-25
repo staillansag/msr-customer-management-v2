@@ -11,3 +11,18 @@ spec:
     targetPort: 9093
   selector:
     app: customer-management
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: msr-customer-management
+  labels:
+    name: msr-customer-management
+spec:
+  type: ClusterIP
+  ports:
+  - port: 443
+    targetPort: 5543
+  selector:
+    app: customer-management
+  sessionAffinity: ClientIP

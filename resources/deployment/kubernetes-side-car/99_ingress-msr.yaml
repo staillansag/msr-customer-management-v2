@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: ingress-msradmin
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
@@ -9,18 +9,17 @@ metadata:
 spec:
   tls:
   - hosts:
-    - customers.sttlab.eu
+    - customers-msradmin.sttlab.eu
     secretName: aks-tls
   rules:
-  - host: "customers.sttlab.eu"
+  - host: "customers-msradmin.sttlab.eu"
     http:
       paths:
         - pathType: Prefix
           path: "/"
           backend:
             service:
-              name: customer-management
+              name: msr-customer-management
               port:
                 number: 443
-
 
