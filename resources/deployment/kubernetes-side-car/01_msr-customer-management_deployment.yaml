@@ -22,7 +22,7 @@ spec:
       labels:
         app: customer-management
     spec:
-      terminationGracePeriodSeconds: 30
+      terminationGracePeriodSeconds: 120
       containers:
       - name: customer-management-mcgw
         image: staillansag/webmethods-microgateway:10.15.0.5
@@ -81,10 +81,6 @@ spec:
             port: 9090
           initialDelaySeconds: 5
           periodSeconds: 10
-        lifecycle:
-          preStop:
-            exec:
-              command: ["/bin/bash", "-c", "sleep 20"]
       - image: staillansag/msr-customer-management-v2:latest
         imagePullPolicy: Always
         name: customer-management-msr
@@ -177,10 +173,6 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 5
           failureThreshold: 24
-        lifecycle:
-          preStop:
-            exec:
-              command: ["/bin/bash", "-c", "sleep 20"]
       volumes:
         - name: licenses
           secret:
