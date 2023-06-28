@@ -3235,6 +3235,9 @@
 
 <MAPCOPY FROM="/selectCustomersOutput;2;0/results;2;1/phoneNumber;1;0" TO="/customers;4;1;CustomerManagement.doc:customerCanonical/phoneNumber;1;0">
 </MAPCOPY>
+
+<MAPCOPY FROM="/selectCustomersOutput;2;0/results;2;1/email;1;0" TO="/customers;4;1;CustomerManagement.doc:customerCanonical/email;1;0">
+</MAPCOPY>
 </MAP>
 
 <MAP NAME="Clean the pipeline" TIMEOUT="" MODE="STANDALONE">
